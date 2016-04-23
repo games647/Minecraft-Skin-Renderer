@@ -56,11 +56,15 @@ imagepng($renderedSkin);
 ## Examples
 
 Dinnerbone head
+```PHP 
 MinecraftSkins::head($skinImage, 5);
+```
 ![Dinnerbone head](http://i.imgur.com/di5eMd6.png)
 
 Dinnerbone full skin
+```PHP 
 MinecraftSkins::skin($skinImage, 5);
+```
 ![Dinnerbone skin](http://i.imgur.com/g1QQCXP.png)
 
 ## Useful links
