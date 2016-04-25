@@ -16,10 +16,8 @@ Minecraft skin renderer library.
 ## ToDo
 
 * 3D-Rendering --> skin rotations/perspective view
-* Combined skin view (head and skin in one image)
 * 1.8 Skin format support
 * Add image smoothing
-* Add more examples
 * Add arms, legs, head position manipulation
 * Add cape rendering
 
@@ -56,13 +54,13 @@ imagepng($renderedSkin);
 ## Examples
 
 Dinnerbone head
-```PHP 
+```PHP
 MinecraftSkins::head($skinImage, 5);
 ```
 ![Dinnerbone head](http://i.imgur.com/di5eMd6.png)
 
 Dinnerbone full skin
-```PHP 
+```PHP
 MinecraftSkins::skin($skinImage, 5);
 ```
 ![Dinnerbone skin](http://i.imgur.com/g1QQCXP.png)
