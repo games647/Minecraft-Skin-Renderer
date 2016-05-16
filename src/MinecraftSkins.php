@@ -27,10 +27,6 @@ class MinecraftSkins {
 
         imagecopyresampled($canvas, $rawSkin, 0 * $scale, 0 * $scale, 8, 8
                 , self::HEAD_SIZE * $scale, self::HEAD_SIZE * $scale, 8, 8);
-        if ($helmet) {
-            imagecopyresampled($canvas, $rawSkin, 0 * $scale, 0 * $scale, 40, 8
-                    , self::HEAD_SIZE  * $scale, self::HEAD_SIZE * $scale, 8, 8);
-        }
 
         return $canvas;
     }

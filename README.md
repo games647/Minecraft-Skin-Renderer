@@ -25,7 +25,7 @@ Minecraft skin renderer library.
 
 With composer it's just:
 
-    composer require minecraft-skin-renderer
+    composer require games647/minecraft-skin-renderer
 
 For non-composer projects, you can drop the files from the /src folder into a libraries folder and use it with a
 require statement at the top of the PHP-File. You can see a example in the example.php file.
