@@ -33,6 +33,7 @@ require statement at the top of the PHP-File. You can see a example in the examp
 ## Usage
 
 ```PHP
+//this is only used if you don't use composer
 require __DIR__ . '/PATH_TO_LIB_FOLDER/MinecraftSkins.php';
 
 use \MinecraftSkins\MinecraftSkins;

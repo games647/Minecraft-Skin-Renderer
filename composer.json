@@ -4,10 +4,10 @@
     "description": "Flexible 3d skin/avatar renderer for minecraft with heads, rotation and complete skins",
     "license": "MIT",
     "type": "library",
-    "homepage": "https://github.com/games647/Skin-Renderer/",
+    "homepage": "https://github.com/games647/Minecraft-Skin-Renderer/",
     "support": {
-        "issues": "https://github.com/games647/Skin-Renderer/issues",
-        "source": "https://github.com/games647/Skin-Renderer"
+        "issues": "https://github.com/games647/Minecraft-Skin-Renderer/issues",
+        "source": "https://github.com/games647/Minecraft-Skin-Renderer"
     },
     "require": {
         "php": ">=5.6"
