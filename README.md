@@ -23,7 +23,7 @@ Minecraft skin renderer library.
 
 ## Installation
 
-Yyou can drop the files from the /src folder into a libraries folder and use it with a
+You can drop the files from the /src folder into a libraries folder and use it with a
 require statement at the top of the PHP-File. You can see a example in the example.php file.
 
 ## Usage
@@ -61,6 +61,12 @@ Dinnerbone full skin
 MinecraftSkins::skin($skinImage, 5);
 ```
 ![Dinnerbone skin](http://i.imgur.com/g1QQCXP.png)
+
+Dinnerbone combined
+```PHP
+MinecraftSkins::combined($skinImage, 5);
+```
+![Dinnerbone skin](https://imgur.com/6nzOzYr.png)
 
 ## Useful links
 
