@@ -16,11 +16,10 @@ class MinecraftSkins {
      * @param int $scale size scale (default: 8 width * 8 height)
      * @param int $vertRot not implemented
      * @param int $horRot not implemented
-     * @param bool $helmet not implemented
      *
      * @return resource the rendered head
      */
-    public static function head($rawSkin, $scale = 1, $vertRot = 0, $horRot = 0, $helmet = true) {
+    public static function head($rawSkin, $scale = 1, $vertRot = 0, $horRot = 0) {
         imagesavealpha($rawSkin, true);
         //we don't need create new **transparent** image because we use the full image size
         $canvas = imagecreatetruecolor(self::HEAD_SIZE * $scale, self::HEAD_SIZE * $scale);
@@ -30,24 +29,42 @@ class MinecraftSkins {
 
         return $canvas;
     }
+    ### if you want render helmet layer - remove comments from line 33-41. ###
+    public static function helm($rawSkin, $scale = 1, $vertRot = 0, $horRot = 0) {
+        imagesavealpha($rawSkin, true);
+        $canvas = self::createTransparent(self::HEAD_SIZE * $scale, self::HEAD_SIZE * $scale);
 
+        imagecopyresampled($canvas, $rawSkin, 0 * $scale, 0 * $scale, 40, 8
+                , self::HEAD_SIZE * $scale, self::HEAD_SIZE * $scale, 8, 8);
+
+        return $canvas;
+    }
     /**
      *
      * @param resource $rawSkin the raw skin data
      * @param int $scale size scale (default: 16 width * 32 height)
      * @param int $vertRot not implemented
      * @param int $horRot not implemented
-     * @param bool $helmet not implemented
      *
      * @return resource the rendered complete skin
      */
-    public static function skin($rawSkin, $scale = 1, $vertRot = 0, $horRot = 0, $helmet = true) {
+     ### if you want render helmet layer - set $helmet = true - in 53 line, else - $helmet = false ###
+     ### if you want render secont skin layer - set $secondskinlayer = true - in 53 line, else - $secondskinlayer = false ### 
+    public static function skin($rawSkin, $scale = 1, $vertRot = 0, $horRot = 0, $helmet = true, $secondskinlayer = true) {
         $canvas = self::createTransparent(self::SKIN_WIDTH * $scale, self::SKIN_HEIGHT * $scale);
         imagesavealpha($canvas, true);
 
         // head
         $head = self::head($rawSkin, $scale);
         imagecopyresampled($canvas, $head, 4 * $scale, 0 * $scale, 0, 0
+                , self::HEAD_SIZE * $scale, self::HEAD_SIZE * $scale
+                , self::HEAD_SIZE * $scale, self::HEAD_SIZE * $scale);
+        
+        // helmet layer
+        if ($helmet == true){
+        $helm = self::helm($rawSkin, $scale);
+        }
+        imagecopyresampled($canvas, $helm, 4 * $scale, 0 * $scale, 0, 0
                 , self::HEAD_SIZE * $scale, self::HEAD_SIZE * $scale
                 , self::HEAD_SIZE * $scale, self::HEAD_SIZE * $scale);
 
@@ -64,6 +81,19 @@ class MinecraftSkins {
         // leg right - must FLIP
         imagecopyresampled($canvas, $rawSkin, 8 * $scale, 20 * $scale, 7, 20, 4 * $scale, 12 * $scale, -4, 12);
 
+        //Second skin layer
+        if ($secondskinlayer == true){
+        // body
+        imagecopyresampled($canvas, $rawSkin, 4 * $scale, 8 * $scale, 20, 36, 8 * $scale, 12 * $scale, 8, 12);
+        // arm left
+        imagecopyresampled($canvas, $rawSkin, 0 * $scale, 8 * $scale, 44, 36, 4 * $scale, 12 * $scale, 4, 12);
+        // arm right - must FLIP
+        imagecopyresampled($canvas, $rawSkin, 12 * $scale, 8 * $scale, 47, 36, 4 * $scale, 12 * $scale, -4, 12);
+        // leg left
+        imagecopyresampled($canvas, $rawSkin, 4 * $scale, 20 * $scale, 4, 36, 4 * $scale, 12 * $scale, 4, 12);
+        // leg right - must FLIP
+        imagecopyresampled($canvas, $rawSkin, 8 * $scale, 20 * $scale, 7, 36, 4 * $scale, 12 * $scale, -4, 12);
+        }
         return $canvas;
     }
 
@@ -71,10 +101,10 @@ class MinecraftSkins {
      *
      * @param resource $rawSkin the raw skin data
      * @param int $scale size scale (default: 80 width * 80 height)
-     * @param bool $helmet not implemented
      *
      * @return resource the rendered complete skin
      */
+    ### if you want render head with helmet as background - set $helmet = true - in 108 line, else - $helmet = false ###
     public static function combined($rawSkin, $scale = 1, $helmet = true) {
         $canvas = self::createTransparent(self::HEAD_SIZE * 8, self::HEAD_SIZE * 8);
         imagesavealpha($canvas, true);
@@ -86,6 +116,12 @@ class MinecraftSkins {
         $head = self::head($rawSkin, 8);
         imagecopyresampled($canvas, $head, 0, 0, 0, 0, self::HEAD_SIZE * 8, self::HEAD_SIZE * 8
                 , self::HEAD_SIZE * 8, self::HEAD_SIZE * 8);
+        // head with helmet as background
+        if ($helmet == true){
+        $helm = self::helm($rawSkin, 8);
+        }
+        imagecopyresampled($canvas, $helm, 0, 0, 0, 0, self::HEAD_SIZE * 8, self::HEAD_SIZE * 8
+                , self::HEAD_SIZE * 8, self::HEAD_SIZE * 8);                
 
         //white shadow
         $shadow = imagecolorallocate($canvas, 0, 0, 0);

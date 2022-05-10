@@ -25,7 +25,7 @@ Minecraft skin renderer library.
 
 With composer it's just:
 
-    composer require games647/minecraft-skin-renderer
+composer require games647/minecraft-skin-renderer
 
 For non-composer projects, you can drop the files from the /src folder into a libraries folder and use it with a
 require statement at the top of the PHP-File. You can see a example in the example.php file.
@@ -65,6 +65,12 @@ Dinnerbone full skin
 MinecraftSkins::skin($skinImage, 5);
 ```
 ![Dinnerbone skin](http://i.imgur.com/g1QQCXP.png)
+
+Dinnerbone combined
+```PHP
+MinecraftSkins::combined($skinImage, 5);
+```
+![Dinnerbone skin](https://imgur.com/6nzOzYr.png)
 
 ## Useful links
 
